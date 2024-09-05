@@ -46,7 +46,7 @@ var geometry = /* color: #98ff00 */ee.Geometry.Polygon(
 
 var collection = ee.ImageCollection('COPERNICUS/S5P/OFFL/L3_CO')
   .select('CO_column_number_density')
-  .filterDate('2024-02-19', '2024-02-24');
+  .filterDate('2024-02-19', '2024-02-25');
 
 var band_viz = {
   min: 0,
@@ -57,7 +57,7 @@ var band_viz = {
 var roi = collection.mean().clip(geometry)
 
 Map.addLayer(roi, band_viz, 'Monoxido Carbono - Media - S5P CO');
-Map.setCenter(-60.873, 0.5, 6);
+Map.setCenter(-60.873, 0, 6);
 
 Export.image.toDrive({
   image: roi,
